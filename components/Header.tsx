@@ -30,9 +30,8 @@ export default function Header({ phone }: { phone?: string }) {
     >
       <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between gap-6">
         {/* Logo */}
-        <a href="#top" className="shrink-0 font-heading text-white text-xl tracking-widest">
-          {/* TODO: замени на <img> когда добавишь /images/logo.png */}
-          РУСАКОВО
+        <a href="#top" className="shrink-0">
+          <img src="/media/Logo.png" alt="Поместье Русаково" className={`w-auto transition-all duration-400 ${scrolled ? 'h-10' : 'h-14'}`} />
         </a>
 
         {/* Desktop nav */}

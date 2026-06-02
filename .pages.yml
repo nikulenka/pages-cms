@@ -1,6 +1,6 @@
 media:
-  input: public/images
-  output: /images
+  input: public/media
+  output: /media
 
 content:
   - name: general
@@ -13,6 +13,10 @@ content:
       - { name: heroEyebrow,    label: Hero — надпись сверху,    type: string }
       - { name: heroTitle,      label: Hero — заголовок,         type: string }
       - { name: heroSubtitle,   label: Hero — подзаголовок,      type: text }
+      - name: heroImages
+        label: Hero — фотографии слайдера
+        type: image
+        list: true
       - { name: welcomeText,    label: Welcome — текст о нас,    type: text }
       - { name: weddingTitle,   label: Свадьбы — заголовок,      type: string }
       - { name: weddingText,    label: Свадьбы — текст,          type: text }
@@ -44,6 +48,10 @@ content:
       - { name: capacity,        label: Вместимость,           type: string }
       - { name: price,           label: Цена,                  type: string }
       - { name: image,           label: Главное фото,          type: image }
+      - name: gallery
+        label: Галерея домика
+        type: image
+        list: true
       - { name: order,           label: Порядок,               type: number, default: 0 }
       - { name: published,       label: Опубликовано,          type: boolean, default: true }
 

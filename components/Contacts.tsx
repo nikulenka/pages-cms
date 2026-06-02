@@ -63,11 +63,28 @@ export default function Contacts({ s }: { s: GeneralSettings }) {
               )}
             </div>
 
-            {/* Map placeholder */}
-            <div className="mt-10 rounded-img overflow-hidden bg-white/5 h-52 flex items-center justify-center">
-              {/* TODO: добавить Яндекс.Карты iframe */}
-              <p className="font-ui text-[11px] tracking-wider text-white/30 uppercase">Карта — д. Белокорец</p>
-            </div>
+            {/* Yandex Map */}
+            <a
+              href="https://yandex.ru/maps/?rtext=~Минская+обл,+Воложинский+р-н,+д+Белокорец,+ул+Центральная+9&rtt=auto"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-10 rounded-img overflow-hidden relative group"
+              title="Открыть маршрут в Яндекс.Картах"
+            >
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?text=Беларусь%2C+Минская+обл%2C+Воложинский+р-н%2C+д+Белокорец%2C+ул+Центральная+9&z=13&l=map"
+                width="100%"
+                height="220"
+                className="rounded-img border-0 pointer-events-none"
+                loading="lazy"
+                title="Поместье Русаково на карте"
+              />
+              <div className="absolute inset-0 bg-transparent group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <span className="bg-black/60 text-white font-ui text-[11px] tracking-wider uppercase px-4 py-2 rounded-btn">
+                  Построить маршрут ↗
+                </span>
+              </div>
+            </a>
           </div>
 
           {/* Form */}

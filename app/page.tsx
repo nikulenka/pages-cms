@@ -4,12 +4,11 @@ import {
 } from '@/lib/content';
 
 import Header       from '@/components/Header';
-import Hero         from '@/components/Hero';
+import HeroSlider   from '@/components/HeroSlider';
 import Welcome      from '@/components/Welcome';
 import WhyUs        from '@/components/WhyUs';
-import Accommodations from '@/components/Accommodations';
-import Activities   from '@/components/Activities';
 import HomeDetails  from '@/components/HomeDetails';
+import Activities   from '@/components/Activities';
 import WeddingBlock from '@/components/WeddingBlock';
 import Gallery      from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
@@ -29,12 +28,16 @@ export default function Home() {
   return (
     <>
       <Header phone={s.phone1} />
-      <Hero         s={s} />
+      <HeroSlider
+        images={s.heroImages}
+        eyebrow={s.heroEyebrow}
+        title={s.heroTitle}
+        subtitle={s.heroSubtitle}
+      />
       <Welcome      s={s} />
       <WhyUs />
-      <Accommodations houses={houses} />
-      <Activities   activities={activities} />
       <HomeDetails  houses={houses} />
+      <Activities   activities={activities} />
       <WeddingBlock s={s} />
       <Gallery      images={gallery} />
       <Testimonials reviews={reviews} />

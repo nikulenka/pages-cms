@@ -16,10 +16,7 @@ export default function Footer({ s }: { s: GeneralSettings }) {
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <div className="font-heading text-2xl font-light tracking-widest mb-3">
-              {/* TODO: <img src="/images/logo.png" alt="..." className="h-14 w-auto" /> */}
-              РУСАКОВО
-            </div>
+            <img src="/media/Logo.png" alt="Поместье Русаково" className="h-16 w-auto mb-3" />
             <p className="font-body text-white/50 text-sm leading-relaxed">
               {s.slogan || 'Отдых в гармонии с природой'}
             </p>
