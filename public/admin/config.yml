@@ -2,6 +2,9 @@ backend:
   name: github
   repo: nikulenka/pages-cms
   branch: main
+  # После деплоя Worker замени URL ниже на свой:
+  # base_url: https://cms-auth.nikulenka.workers.dev
+  base_url: https://cms-auth.nikulenka.workers.dev
 
 media_folder: "public/media"
 public_folder: "/media"
@@ -14,27 +17,31 @@ collections:
     extension: "md"
     slug: "{{slug}}"
     fields:
-      - {label: "Название", name: "title", widget: "string", required: true}
-      - {label: "Тип (Дом / Баня)", name: "type", widget: "select", options: ["Дом", "Баня"]}
-      - {label: "Короткое описание", name: "description", widget: "text"}
-      - {label: "Полное описание", name: "fullDescription", widget: "markdown"}
-      - {label: "Вместимость", name: "capacity", widget: "string"}
-      - {label: "Цена (от)", name: "price", widget: "string"}
-      - {label: "Изображение (главное)", name: "image", widget: "image"}
-      - {label: "Дополнительные фото", name: "gallery", widget: "list", fields: [{label: "Фото", name: "image", widget: "image"}]}
-      - {label: "Порядок отображения", name: "order", widget: "number", default: 0}
-      - {label: "Опубликовано", name: "published", widget: "boolean", default: true}
+      - {label: "Название",              name: "title",           widget: "string",   required: true}
+      - {label: "Тип (Дом / Баня)",      name: "type",            widget: "select",   options: ["Дом", "Баня"]}
+      - {label: "Короткое описание",     name: "description",     widget: "text"}
+      - {label: "Полное описание",       name: "fullDescription", widget: "text"}
+      - {label: "Вместимость",           name: "capacity",        widget: "string"}
+      - {label: "Цена",                  name: "price",           widget: "string"}
+      - {label: "Главное фото",          name: "image",           widget: "image"}
+      - label: "Галерея домика"
+        name: "gallery"
+        widget: "list"
+        field: {label: "Фото", name: "image", widget: "image"}
+      - {label: "Порядок отображения",   name: "order",           widget: "number",   default: 0}
+      - {label: "Опубликовано",          name: "published",       widget: "boolean",  default: true}
 
   - name: "activities"
-    label: "Чем заняться"
+    label: "Активности"
     folder: "content/activities"
     create: true
     extension: "md"
     fields:
-      - {label: "Название активности", name: "title", widget: "string"}
-      - {label: "Короткое описание", name: "description", widget: "text"}
-      - {label: "Иконка (эмодзи)", name: "icon", widget: "string"}
-      - {label: "Порядок", name: "order", widget: "number"}
+      - {label: "Название",     name: "title",       widget: "string"}
+      - {label: "Описание",     name: "description", widget: "text"}
+      - {label: "Фото",         name: "image",       widget: "image"}
+      - {label: "Порядок",      name: "order",       widget: "number"}
+      - {label: "Опубликовано", name: "published",   widget: "boolean", default: true}
 
   - name: "reviews"
     label: "Отзывы гостей"
@@ -42,10 +49,11 @@ collections:
     create: true
     extension: "md"
     fields:
-      - {label: "Имя гостя", name: "name", widget: "string"}
-      - {label: "Текст отзыва", name: "text", widget: "text"}
-      - {label: "Город / Страна", name: "location", widget: "string"}
-      - {label: "Дата", name: "date", widget: "datetime"}
+      - {label: "Имя гостя",    name: "name",      widget: "string"}
+      - {label: "Текст",        name: "text",      widget: "text"}
+      - {label: "Город",        name: "location",  widget: "string"}
+      - {label: "Рейтинг",      name: "rating",    widget: "number", default: 5}
+      - {label: "Дата",         name: "date",      widget: "datetime"}
       - {label: "Опубликовано", name: "published", widget: "boolean", default: true}
 
   - name: "general"
@@ -53,17 +61,60 @@ collections:
     files:
       - file: "content/general.yml"
         name: "contacts"
-        label: "Контакты и информация"
+        label: "Все настройки"
         fields:
-          - {label: "Название усадьбы", name: "siteTitle", widget: "string", default: "Поместье Русаково"}
-          - {label: "Телефон", name: "phone", widget: "string"}
-          - {label: "Email", name: "email", widget: "string"}
-          - {label: "Адрес", name: "address", widget: "string"}
-          - {label: "WhatsApp / Telegram", name: "whatsapp", widget: "string"}
-          - {label: "Короткое описание усадьбы", name: "heroSubtitle", widget: "text"}
+          - {label: "Название усадьбы",      name: "siteTitle",     widget: "string"}
+          - {label: "Слоган",                name: "slogan",        widget: "string"}
+          - {label: "Hero — eyebrow",        name: "heroEyebrow",   widget: "string"}
+          - {label: "Hero — заголовок",      name: "heroTitle",     widget: "string"}
+          - {label: "Hero — подзаголовок",   name: "heroSubtitle",  widget: "text"}
+          - label: "Hero — слайдер (фото)"
+            name: "heroImages"
+            widget: "list"
+            field: {label: "Фото", name: "image", widget: "image"}
+          - {label: "Welcome — текст",       name: "welcomeText",   widget: "text"}
+          - {label: "Свадьбы — заголовок",   name: "weddingTitle",  widget: "string"}
+          - {label: "Свадьбы — текст",       name: "weddingText",   widget: "text"}
+          - {label: "Свадьбы — фото",        name: "weddingImage",  widget: "image", required: false}
+          - {label: "Телефон основной",      name: "phone1",        widget: "string"}
+          - {label: "Телефон доп.",          name: "phone2",        widget: "string"}
+          - {label: "Адрес",                 name: "address",       widget: "string"}
+          - {label: "От Минска",             name: "distanceMinsk", widget: "string"}
+          - {label: "От Воложина",           name: "distanceVolozhyn", widget: "string"}
+          - {label: "Instagram",             name: "instagram",     widget: "string"}
+          - {label: "Время ответа",          name: "responseTime",  widget: "string"}
+          - {label: "Цена / чел. / ночь",    name: "pricePerNight", widget: "string"}
+          - {label: "Цена новогодняя",       name: "priceNewYear",  widget: "string"}
+          - {label: "Цена бани",             name: "priceBanya",    widget: "string"}
+          - {label: "Заезд",                 name: "checkIn",       widget: "string"}
+          - {label: "Выезд",                 name: "checkOut",      widget: "string"}
+          - {label: "Предоплата",            name: "prepayment",    widget: "string"}
+          - {label: "Условие отмены",        name: "cancellation",  widget: "string"}
 
-      - file: "content/seo.yml"
-        name: "seo"
-        label: "SEO"
+  - name: "gallery"
+    label: "Галерея"
+    files:
+      - file: "content/gallery.yml"
+        name: "photos"
+        label: "Фотографии"
         fields:
-          - {label: "Meta Description", name: "metaDescription", widget: "text"}
+          - label: "Фотографии"
+            name: "images"
+            widget: "list"
+            fields:
+              - {label: "Фото",      name: "src", widget: "image"}
+              - {label: "Описание",  name: "alt", widget: "string", required: false}
+
+  - name: "faq"
+    label: "FAQ"
+    files:
+      - file: "content/faq.yml"
+        name: "questions"
+        label: "Вопросы и ответы"
+        fields:
+          - label: "Вопросы"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Вопрос", name: "question", widget: "string"}
+              - {label: "Ответ",  name: "answer",   widget: "text"}
