@@ -1,71 +1,107 @@
-backend:
-  name: github
-  repo: nikulenka/pages-cms
-  branch: main
+media:
+  input: public/images
+  output: /images
 
-media_folder: "public/images"
-public_folder: "/images"
-
-collections:
-  # ==================== ДОМИКИ ====================
-  - name: "houses"
-    label: "Домики и Баня"
-    folder: "content/houses"
-    create: true
-    extension: "md"
-    slug: "{{slug}}"
+content:
+  - name: houses
+    label: Домики и Баня
+    type: collection
+    path: content/houses
+    filename: "{fields.title}"
+    extension: md
     fields:
-      - {label: "Название", name: "title", widget: "string", required: true}
-      - {label: "Тип (Дом / Баня)", name: "type", widget: "select", options: ["Дом", "Баня"]}
-      - {label: "Короткое описание", name: "description", widget: "text"}
-      - {label: "Полное описание", name: "fullDescription", widget: "markdown"}
-      - {label: "Вместимость", name: "capacity", widget: "string"}
-      - {label: "Цена (от)", name: "price", widget: "string"}
-      - {label: "Изображение (главное)", name: "image", widget: "image"}
-      - {label: "Дополнительные фото", name: "gallery", widget: "list", fields: [{label: "Фото", name: "image", widget: "image"}]}
-      - {label: "Порядок отображения", name: "order", widget: "number", default: 0}
-      - {label: "Опубликовано", name: "published", widget: "boolean", default: true}
+      - name: title
+        label: Название
+        type: string
+        required: true
+      - name: type
+        label: Тип
+        type: select
+        options:
+          values: ["Дом", "Баня"]
+      - name: description
+        label: Короткое описание
+        type: text
+      - name: capacity
+        label: Вместимость
+        type: string
+      - name: price
+        label: Цена (от)
+        type: string
+      - name: order
+        label: Порядок отображения
+        type: number
+        default: 0
+      - name: published
+        label: Опубликовано
+        type: boolean
+        default: true
 
-  # ==================== АКТИВНОСТИ ====================
-  - name: "activities"
-    label: "Чем заняться"
-    folder: "content/activities"
-    create: true
-    extension: "md"
+  - name: activities
+    label: Чем заняться
+    type: collection
+    path: content/activities
+    filename: "{fields.title}"
+    extension: md
     fields:
-      - {label: "Название активности", name: "title", widget: "string"}
-      - {label: "Короткое описание", name: "description", widget: "text"}
-      - {label: "Иконка (эмодзи)", name: "icon", widget: "string"}
-      - {label: "Порядок", name: "order", widget: "number"}
+      - name: title
+        label: Название активности
+        type: string
+      - name: description
+        label: Описание
+        type: text
+      - name: icon
+        label: Иконка (эмодзи)
+        type: string
+      - name: order
+        label: Порядок
+        type: number
 
-  # ==================== ОТЗЫВЫ ====================
-  - name: "reviews"
-    label: "Отзывы гостей"
-    folder: "content/reviews"
-    create: true
-    extension: "md"
+  - name: reviews
+    label: Отзывы гостей
+    type: collection
+    path: content/reviews
+    filename: "{fields.name}"
+    extension: md
     fields:
-      - {label: "Имя гостя", name: "name", widget: "string"}
-      - {label: "Текст отзыва", name: "text", widget: "text"}
-      - {label: "Город / Страна", name: "location", widget: "string"}
-      - {label: "Дата", name: "date", widget: "datetime"}
-      - {label: "Опубликовано", name: "published", widget: "boolean", default: true}
+      - name: name
+        label: Имя гостя
+        type: string
+      - name: text
+        label: Текст отзыва
+        type: text
+      - name: location
+        label: Город / Страна
+        type: string
+      - name: date
+        label: Дата
+        type: date
+      - name: published
+        label: Опубликовано
+        type: boolean
+        default: true
 
-  # ==================== ОБЩИЕ НАСТРОЙКИ ====================
-  - name: "general"
-    label: "Настройки сайта"
-    files:
-      - file: "content/general.yml"
-        label: "Контакты и информация"
-        fields:
-          - {label: "Название усадьбы", name: "siteTitle", widget: "string", default: "Поместье Русаково"}
-          - {label: "Телефон", name: "phone", widget: "string"}
-          - {label: "Email", name: "email", widget: "string"}
-          - {label: "Адрес", name: "address", widget: "string"}
-          - {label: "WhatsApp / Telegram", name: "whatsapp", widget: "string"}
-          - {label: "Короткое описание усадьбы", name: "heroSubtitle", widget: "text"}
-
-      - file: "content/seo.yml"
-        label: "SEO"
-        fields:
-          - {label: "Meta Description", name: "metaDescription", widget: "text"}
+  - name: general
+    label: Настройки сайта
+    type: file
+    path: content/general.yml
+    fields:
+      - name: siteTitle
+        label: Название усадьбы
+        type: string
+        default: Поместье Русаково
+      - name: phone
+        label: Телефон
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: address
+        label: Адрес
+        type: string
+      - name: whatsapp
+        label: WhatsApp / Telegram
+        type: string
+      - name: heroSubtitle
+        label: Описание на главной
+        type: text
