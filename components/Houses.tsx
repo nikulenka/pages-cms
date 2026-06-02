@@ -1,43 +1,9 @@
 'use client';
 import { useState } from 'react';
+import type { House } from '@/lib/content';
 
-const houses = [
-  {
-    id: 1,
-    title: "Дом «Лесной»",
-    description: "Просторный дом на 4–6 человек с большой террасой и видом на лес",
-    image: "https://picsum.photos/id/1015/800/600",
-    capacity: "4–6 гостей",
-    price: "от 12 000 ₽ / сутки"
-  },
-  {
-    id: 2,
-    title: "Дом «Озёрный»",
-    description: "Уютный домик у пруда с панорамными окнами и камином",
-    image: "https://picsum.photos/id/133/800/600",
-    capacity: "2–4 гостей",
-    price: "от 9 500 ₽ / сутки"
-  },
-  {
-    id: 3,
-    title: "Дом «Солнечный»",
-    description: "Светлый дом с мансардой, идеален для семьи или компании",
-    image: "https://picsum.photos/id/201/800/600",
-    capacity: "4–6 гостей",
-    price: "от 11 000 ₽ / сутки"
-  },
-  {
-    id: 4,
-    title: "Русская Баня",
-    description: "Настоящая баня по-чёрному и по-белому с купелью и зоной отдыха",
-    image: "https://picsum.photos/id/316/800/600",
-    capacity: "До 8 человек",
-    price: "от 4 500 ₽ / 2 часа"
-  }
-];
-
-export default function Houses() {
-  const [selectedHouse, setSelectedHouse] = useState<any>(null);
+export default function Houses({ houses }: { houses: House[] }) {
+  const [selectedHouse, setSelectedHouse] = useState<House | null>(null);
 
   return (
     <section id="domiki" className="py-24 bg-[#FAF6F0]">
@@ -47,7 +13,7 @@ export default function Houses() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {houses.map((house) => (
             <div
-              key={house.id}
+              key={house.title}
               className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition group cursor-pointer"
               onClick={() => setSelectedHouse(house)}
             >
