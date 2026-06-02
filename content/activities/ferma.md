@@ -1,7 +1,7 @@
 ---
 title: "Ферма"
 description: "Овцы и птица — живое общение с животными и настоящая фермерская атмосфера для детей и взрослых."
-image: "https://picsum.photos/id/582/600/600"
+image: "/media/ph-582.jpg"
 order: 5
 published: true
 ---

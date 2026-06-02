@@ -5,11 +5,11 @@ description: "Светлый дом с мансардой, идеален для
 fullDescription: "Светлый просторный дом с красивой мансардой. Много естественного света, уютная обстановка. Идеален для семейного отдыха."
 capacity: "4–6 гостей"
 price: "от 150 руб. / чел."
-image: "https://picsum.photos/id/201/800/600"
+image: "/media/ph-201.jpg"
 gallery:
-  - "https://picsum.photos/id/201/800/600"
-  - "https://picsum.photos/id/206/800/600"
-  - "https://picsum.photos/id/211/800/600"
+  - "/media/ph-201.jpg"
+  - "/media/ph-206.jpg"
+  - "/media/ph-211.jpg"
 order: 3
 published: true
 ---

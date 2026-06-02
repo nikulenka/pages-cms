@@ -1,19 +1,22 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const NAV = [
-  { href: '#about',     label: 'О ПОМЕСТЬЕ' },
-  { href: '#domiki',    label: 'РАЗМЕЩЕНИЕ' },
-  { href: '#aktivnosti',label: 'АКТИВНОСТИ' },
-  { href: '#banya',     label: 'БАНЯ' },
+const NAV_LEFT  = [
+  { href: '#about',      label: 'О ПОМЕСТЬЕ' },
+  { href: '#domiki',     label: 'РАЗМЕЩЕНИЕ' },
+  { href: '#aktivnosti', label: 'АКТИВНОСТИ' },
+  { href: '#banya',      label: 'БАНЯ' },
+];
+const NAV_RIGHT = [
   { href: '#svadba',    label: 'СВАДЬБЫ' },
   { href: '#galereya',  label: 'ГАЛЕРЕЯ' },
   { href: '#kontakty',  label: 'КОНТАКТЫ' },
 ];
+const NAV_ALL = [...NAV_LEFT, ...NAV_RIGHT];
 
 export default function Header({ phone }: { phone?: string }) {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen]         = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 80);
@@ -21,57 +24,56 @@ export default function Header({ phone }: { phone?: string }) {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
+  const linkCls = 'font-ui text-[10px] tracking-[0.2em] text-white/80 hover:text-sand transition-colors duration-400';
+
   return (
     <header
       id="top"
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-400 ${
-        scrolled ? 'bg-charcoal shadow-lg py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-charcoal shadow-lg py-3' : 'bg-transparent py-4'
       }`}
     >
-      <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between gap-6">
-        {/* Logo */}
-        <a href="#top" className="shrink-0">
+      {/* ── Desktop: 3-column grid with logo in centre ── */}
+      <div className="hidden lg:grid max-w-[1400px] mx-auto px-8"
+        style={{ gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: '24px' }}>
+
+        {/* Left nav */}
+        <nav className="flex items-center gap-6">
+          {NAV_LEFT.map(({ href, label }) => (
+            <a key={href} href={href} className={linkCls}>{label}</a>
+          ))}
+        </nav>
+
+        {/* Logo — center */}
+        <a href="#top">
           <div className={`rounded-full overflow-hidden transition-all duration-400 ${scrolled ? 'w-10 h-10' : 'w-14 h-14'}`}>
             <img src="/media/Logo.png" alt="Поместье Русаково" className="w-full h-full object-cover" />
           </div>
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-          {NAV.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className="font-ui text-[10px] tracking-[0.2em] text-white/80 hover:text-sand transition-colors duration-400"
-            >
-              {label}
-            </a>
+        {/* Right nav + CTA */}
+        <nav className="flex items-center justify-end gap-6">
+          {NAV_RIGHT.map(({ href, label }) => (
+            <a key={href} href={href} className={linkCls}>{label}</a>
           ))}
-        </nav>
-
-        {/* CTA */}
-        <div className="hidden lg:flex items-center gap-5">
-          {phone && (
-            <a
-              href={`tel:${phone.replace(/\D/g, '')}`}
-              className="font-ui text-[11px] tracking-wider text-white/70 hover:text-white transition-colors"
-            >
-              {phone}
-            </a>
-          )}
           <a
             href="#kontakty"
-            className={`btn text-[10px] py-3 px-7 ${
-              scrolled ? 'btn-primary' : 'btn-ghost'
-            }`}
+            className={`btn text-[10px] py-2.5 px-6 ml-2 ${scrolled ? 'btn-primary' : 'btn-ghost'}`}
           >
             ЗАБРОНИРОВАТЬ
           </a>
-        </div>
+        </nav>
+      </div>
 
-        {/* Burger */}
+      {/* ── Mobile: logo left, burger right ── */}
+      <div className="lg:hidden flex items-center justify-between px-5">
+        <a href="#top">
+          <div className={`rounded-full overflow-hidden transition-all duration-400 ${scrolled ? 'w-9 h-9' : 'w-12 h-12'}`}>
+            <img src="/media/Logo.png" alt="Поместье Русаково" className="w-full h-full object-cover" />
+          </div>
+        </a>
         <button
-          className="lg:hidden flex flex-col gap-1.5 p-2"
+          className="flex flex-col gap-1.5 p-2"
           onClick={() => setOpen(!open)}
           aria-label="Меню"
         >
@@ -84,18 +86,14 @@ export default function Header({ phone }: { phone?: string }) {
       {/* Mobile drawer */}
       {open && (
         <div className="lg:hidden bg-charcoal border-t border-white/10 pb-4">
-          {NAV.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              className="block px-6 py-4 font-ui text-[11px] tracking-[0.2em] text-white border-b border-white/10 hover:text-sand"
-            >
+          {NAV_ALL.map(({ href, label }) => (
+            <a key={href} href={href} onClick={() => setOpen(false)}
+              className="block px-6 py-4 font-ui text-[11px] tracking-[0.2em] text-white border-b border-white/10 hover:text-sand">
               {label}
             </a>
           ))}
           <div className="px-6 pt-4">
-            <a href="#kontakty" onClick={() => setOpen(false)} className="btn btn-primary w-full text-center block">
+            <a href="#kontakty" onClick={() => setOpen(false)} className="btn btn-primary w-full text-center block text-[10px]">
               ЗАБРОНИРОВАТЬ
             </a>
           </div>
