@@ -2,9 +2,7 @@ backend:
   name: github
   repo: nikulenka/pages-cms
   branch: main
-  # После деплоя Worker замени URL ниже на свой:
-  # base_url: https://cms-auth.nikulenka.workers.dev
-  base_url: https://cms-auth.nikulenka.workers.dev
+  base_url: https://cms-auth.yjd4d2s94k.workers.dev
 
 media_folder: "public/media"
 public_folder: "/media"
