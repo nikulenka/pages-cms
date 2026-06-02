@@ -7,13 +7,13 @@ content:
     label: Домики и Баня
     type: collection
     path: content/houses
-    filename: "{fields.title}"
     extension: md
     fields:
       - name: title
         label: Название
         type: string
         required: true
+        primary: true
       - name: type
         label: Тип
         type: select
@@ -41,12 +41,12 @@ content:
     label: Чем заняться
     type: collection
     path: content/activities
-    filename: "{fields.title}"
     extension: md
     fields:
       - name: title
         label: Название активности
         type: string
+        primary: true
       - name: description
         label: Описание
         type: text
@@ -61,12 +61,12 @@ content:
     label: Отзывы гостей
     type: collection
     path: content/reviews
-    filename: "{fields.name}"
     extension: md
     fields:
       - name: name
         label: Имя гостя
         type: string
+        primary: true
       - name: text
         label: Текст отзыва
         type: text
