@@ -5,6 +5,7 @@ import {
 
 import Header       from '@/components/Header';
 import Hero         from '@/components/Hero';
+import Welcome      from '@/components/Welcome';
 import WhyUs        from '@/components/WhyUs';
 import Accommodations from '@/components/Accommodations';
 import Activities   from '@/components/Activities';
@@ -29,6 +30,7 @@ export default function Home() {
     <>
       <Header phone={s.phone1} />
       <Hero         s={s} />
+      <Welcome      s={s} />
       <WhyUs />
       <Accommodations houses={houses} />
       <Activities   activities={activities} />

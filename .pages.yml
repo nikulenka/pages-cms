@@ -13,6 +13,7 @@ content:
       - { name: heroEyebrow,    label: Hero — надпись сверху,    type: string }
       - { name: heroTitle,      label: Hero — заголовок,         type: string }
       - { name: heroSubtitle,   label: Hero — подзаголовок,      type: text }
+      - { name: welcomeText,    label: Welcome — текст о нас,    type: text }
       - { name: weddingTitle,   label: Свадьбы — заголовок,      type: string }
       - { name: weddingText,    label: Свадьбы — текст,          type: text }
       - { name: phone1,         label: Телефон основной,         type: string }

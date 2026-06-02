@@ -53,6 +53,7 @@ export type GeneralSettings = {
   heroTitle?: string;
   heroSubtitle?: string;
   heroImage?: string;
+  welcomeText?: string;
   weddingTitle?: string;
   weddingText?: string;
   weddingImage?: string;
