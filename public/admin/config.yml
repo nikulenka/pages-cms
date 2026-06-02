@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: nikulenka/pages-cms
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "houses"
+    label: "Домики и Баня"
+    folder: "content/houses"
+    create: true
+    extension: "md"
+    fields:
+      - {label: "Заголовок", name: "title", widget: "string", required: true}
+      - {label: "Короткое описание", name: "description", widget: "text"}
+      - {label: "Вместимость", name: "capacity", widget: "string"}
+      - {label: "Цена", name: "price", widget: "string"}
+      - {label: "Изображение", name: "image", widget: "image"}
+      - {label: "Порядок отображения", name: "order", widget: "number", default: 0}
+
+  - name: "reviews"
+    label: "Отзывы"
+    folder: "content/reviews"
+    create: true
+    fields:
+      - {label: "Имя гостя", name: "name", widget: "string"}
+      - {label: "Текст отзыва", name: "text", widget: "text"}
+      - {label: "Город", name: "location", widget: "string"}
+      - {label: "Дата", name: "date", widget: "datetime"}
+
+  - name: "general"
+    label: "Общие настройки"
+    files:
+      - file: "content/general.yml"
+        label: "Контакты и информация"
+        fields:
+          - {label: "Телефон", name: "phone", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Адрес", name: "address", widget: "string"}
