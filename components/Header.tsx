@@ -31,7 +31,9 @@ export default function Header({ phone }: { phone?: string }) {
       <div className="max-w-[1200px] mx-auto px-5 flex items-center justify-between gap-6">
         {/* Logo */}
         <a href="#top" className="shrink-0">
-          <img src="/media/Logo.png" alt="Поместье Русаково" className={`w-auto transition-all duration-400 ${scrolled ? 'h-10' : 'h-14'}`} />
+          <div className={`rounded-full overflow-hidden transition-all duration-400 ${scrolled ? 'w-10 h-10' : 'w-14 h-14'}`}>
+            <img src="/media/Logo.png" alt="Поместье Русаково" className="w-full h-full object-cover" />
+          </div>
         </a>
 
         {/* Desktop nav */}
