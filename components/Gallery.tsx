@@ -1,21 +1,26 @@
-export default function Gallery() {
-  const photos = [
-    "https://picsum.photos/id/1015/600/400",
-    "https://picsum.photos/id/133/600/400",
-    "https://picsum.photos/id/201/600/400",
-    "https://picsum.photos/id/316/600/400",
-    "https://picsum.photos/id/1016/600/400",
-    "https://picsum.photos/id/870/600/400",
-  ];
+import type { GalleryImage } from '@/lib/content';
+
+export default function Gallery({ images }: { images: GalleryImage[] }) {
+  if (!images.length) return null;
 
   return (
-    <section id="galereya" className="py-24 bg-[#FAF6F0]">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-5xl font-bold text-center text-[#2A6B3E] mb-16">Галерея</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {photos.map((src, i) => (
-            <div key={i} className="aspect-video rounded-2xl overflow-hidden">
-              <img src={src} alt="" className="w-full h-full object-cover hover:scale-110 transition" />
+    <section id="galereya" className="py-[140px] bg-ivory-alt">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-20">
+        <div className="text-center mb-16">
+          <p className="eyebrow mb-4">Атмосфера усадьбы</p>
+          <h2 className="section-h2">Моменты гостей</h2>
+          <div className="divider" />
+        </div>
+
+        <div className="masonry">
+          {images.map((img, i) => (
+            <div key={i} className="masonry-item">
+              <img
+                src={img.src}
+                alt={img.alt || 'Поместье Русаково'}
+                loading="lazy"
+                className="w-full rounded-gallery hover:scale-[1.04] transition-transform duration-400"
+              />
             </div>
           ))}
         </div>

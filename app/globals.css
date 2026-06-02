@@ -1,3 +1,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --clr-forest:      #2F4F3A;
+  --clr-olive:       #70835A;
+  --clr-sand:        #D4B483;
+  --clr-ivory:       #FAF9F5;
+  --clr-ivory-alt:   #F8F6F2;
+  --clr-charcoal:    #222222;
+  --clr-text:        #222222;
+  --clr-text-muted:  #666666;
+  --radius-btn:      10px;
+  --radius-card:     16px;
+  --radius-img:      18px;
+  --radius-gallery:  12px;
+  --duration:        400ms;
+  --ease:            cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  color: var(--clr-text);
+  background: #fff;
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply font-ui text-[13px] tracking-[0.25em] uppercase text-forest;
+  }
+  .divider {
+    width: 60px; height: 1px;
+    background: var(--clr-sand);
+    margin: 24px auto;
+  }
+  .section-h2 {
+    @apply font-heading font-light text-[42px] leading-[1.15] text-charcoal;
+  }
+  .btn {
+    @apply inline-block font-ui text-[11px] font-semibold tracking-[0.25em] uppercase
+           px-10 py-[14px] rounded-btn cursor-pointer transition-all duration-400 no-underline;
+  }
+  .btn-primary {
+    @apply bg-forest text-white border border-forest hover:brightness-110;
+  }
+  .btn-secondary {
+    @apply bg-transparent text-forest border border-forest hover:bg-forest hover:text-white;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-white border border-white/70 hover:bg-white hover:text-charcoal;
+  }
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Masonry gallery */
+.masonry { columns: 4; column-gap: 16px; }
+.masonry-item { break-inside: avoid; margin-bottom: 16px; }
+@media (max-width: 1024px) { .masonry { columns: 3; } }
+@media (max-width: 640px)  { .masonry { columns: 2; } }

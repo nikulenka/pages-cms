@@ -3,59 +3,60 @@ media:
   output: /images
 
 content:
+  - name: general
+    label: Настройки сайта
+    type: file
+    path: content/general.yml
+    fields:
+      - { name: siteTitle,      label: Название усадьбы,         type: string }
+      - { name: slogan,         label: Слоган,                   type: string }
+      - { name: heroEyebrow,    label: Hero — надпись сверху,    type: string }
+      - { name: heroTitle,      label: Hero — заголовок,         type: string }
+      - { name: heroSubtitle,   label: Hero — подзаголовок,      type: text }
+      - { name: weddingTitle,   label: Свадьбы — заголовок,      type: string }
+      - { name: weddingText,    label: Свадьбы — текст,          type: text }
+      - { name: phone1,         label: Телефон основной,         type: string }
+      - { name: phone2,         label: Телефон доп.,             type: string }
+      - { name: address,        label: Адрес,                    type: string }
+      - { name: distanceMinsk,  label: Расстояние от Минска,     type: string }
+      - { name: distanceVolozhyn, label: Расстояние от Воложина, type: string }
+      - { name: instagram,      label: Instagram,                type: string }
+      - { name: responseTime,   label: Время ответа,             type: string }
+      - { name: pricePerNight,  label: Цена / чел. / ночь,       type: string }
+      - { name: priceNewYear,   label: Цена новогодняя,          type: string }
+      - { name: priceBanya,     label: Цена бани,                type: string }
+      - { name: checkIn,        label: Заезд,                    type: string }
+      - { name: checkOut,       label: Выезд,                    type: string }
+      - { name: prepayment,     label: Предоплата,               type: string }
+      - { name: cancellation,   label: Условие отмены,           type: string }
+
   - name: houses
     label: Домики и Баня
     type: collection
     path: content/houses
     extension: md
     fields:
-      - name: title
-        label: Название
-        type: string
-        required: true
-        primary: true
-      - name: type
-        label: Тип
-        type: select
-        options:
-          values: ["Дом", "Баня"]
-      - name: description
-        label: Короткое описание
-        type: text
-      - name: capacity
-        label: Вместимость
-        type: string
-      - name: price
-        label: Цена (от)
-        type: string
-      - name: order
-        label: Порядок отображения
-        type: number
-        default: 0
-      - name: published
-        label: Опубликовано
-        type: boolean
-        default: true
+      - { name: title,           label: Название,              type: string, primary: true }
+      - { name: type,            label: "Тип (Дом / Баня)",    type: string }
+      - { name: description,     label: Короткое описание,     type: text }
+      - { name: fullDescription, label: Полное описание,       type: text }
+      - { name: capacity,        label: Вместимость,           type: string }
+      - { name: price,           label: Цена,                  type: string }
+      - { name: image,           label: Главное фото,          type: image }
+      - { name: order,           label: Порядок,               type: number, default: 0 }
+      - { name: published,       label: Опубликовано,          type: boolean, default: true }
 
   - name: activities
-    label: Чем заняться
+    label: Активности
     type: collection
     path: content/activities
     extension: md
     fields:
-      - name: title
-        label: Название активности
-        type: string
-        primary: true
-      - name: description
-        label: Описание
-        type: text
-      - name: icon
-        label: Иконка (эмодзи)
-        type: string
-      - name: order
-        label: Порядок
-        type: number
+      - { name: title,       label: Название,     type: string, primary: true }
+      - { name: description, label: Описание,     type: text }
+      - { name: image,       label: Фото,         type: image }
+      - { name: order,       label: Порядок,      type: number, default: 0 }
+      - { name: published,   label: Опубликовано, type: boolean, default: true }
 
   - name: reviews
     label: Отзывы гостей
@@ -63,45 +64,35 @@ content:
     path: content/reviews
     extension: md
     fields:
-      - name: name
-        label: Имя гостя
-        type: string
-        primary: true
-      - name: text
-        label: Текст отзыва
-        type: text
-      - name: location
-        label: Город / Страна
-        type: string
-      - name: date
-        label: Дата
-        type: date
-      - name: published
-        label: Опубликовано
-        type: boolean
-        default: true
+      - { name: name,      label: Имя гостя,    type: string, primary: true }
+      - { name: location,  label: Город,        type: string }
+      - { name: text,      label: Текст отзыва, type: text }
+      - { name: rating,    label: Рейтинг,      type: number, default: 5 }
+      - { name: date,      label: Дата,         type: date }
+      - { name: published, label: Опубликовано, type: boolean, default: true }
 
-  - name: general
-    label: Настройки сайта
+  - name: faq
+    label: FAQ — Частые вопросы
     type: file
-    path: content/general.yml
+    path: content/faq.yml
     fields:
-      - name: siteTitle
-        label: Название усадьбы
-        type: string
-        default: Поместье Русаково
-      - name: phone
-        label: Телефон
-        type: string
-      - name: email
-        label: Email
-        type: string
-      - name: address
-        label: Адрес
-        type: string
-      - name: whatsapp
-        label: WhatsApp / Telegram
-        type: string
-      - name: heroSubtitle
-        label: Описание на главной
-        type: text
+      - name: items
+        label: Вопросы
+        type: object
+        list: true
+        fields:
+          - { name: question, label: Вопрос, type: string }
+          - { name: answer,   label: Ответ,  type: text }
+
+  - name: gallery
+    label: Галерея
+    type: file
+    path: content/gallery.yml
+    fields:
+      - name: images
+        label: Фотографии
+        type: object
+        list: true
+        fields:
+          - { name: src, label: URL фото, type: image }
+          - { name: alt, label: Описание, type: string }

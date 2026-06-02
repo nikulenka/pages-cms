@@ -1,25 +1,34 @@
-export default function Activities() {
-  const activities = [
-    { title: "Русская баня", desc: "С купелью и зоной отдыха", icon: "🪵" },
-    { title: "Прогулки по лесу", desc: "Сбор грибов и ягод", icon: "🌲" },
-    { title: "Рыбалка", desc: "На пруду рядом с усадьбой", icon: "🎣" },
-    { title: "Велосипеды и катамараны", desc: "Активный отдых на природе", icon: "🚲" },
-    { title: "Мастер-классы", desc: "Кулинария, травы, рукоделие", icon: "🍲" },
-    { title: "Вечера у костра", desc: "Гитара, чай и звёздное небо", icon: "🔥" },
-  ];
+import type { Activity } from '@/lib/content';
 
+export default function Activities({ activities }: { activities: Activity[] }) {
   return (
-    <section id="aktivnosti" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-5xl font-bold text-center text-[#2A6B3E] mb-16">Как провести время</h2>
+    <section id="aktivnosti" className="py-[140px] bg-ivory">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-20">
+        <div className="text-center mb-16">
+          <p className="eyebrow mb-4">Развлечения и отдых</p>
+          <h2 className="section-h2">Как провести время</h2>
+          <div className="divider" />
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {activities.map((item, i) => (
-            <div key={i} className="bg-[#FAF6F0] p-10 rounded-3xl hover:scale-105 transition">
-              <div className="text-6xl mb-6">{item.icon}</div>
-              <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-[#3C2F2F]">{item.desc}</p>
-            </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {activities.map((a) => (
+            <article
+              key={a.title}
+              className="bg-white rounded-card overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.1)] transition-all duration-400 group"
+            >
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-heading text-xl font-light mb-2">{a.title}</h3>
+                <p className="font-body text-text-muted text-[14px] leading-relaxed">{a.description}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>
