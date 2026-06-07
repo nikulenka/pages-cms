@@ -105,3 +105,65 @@ content:
         fields:
           - { name: src, label: URL фото, type: image }
           - { name: alt, label: Описание, type: string }
+
+  - name: splavy
+    label: Лендинг «Байдарки»
+    type: file
+    path: content/splavy.yml
+    fields:
+      - { name: heroEyebrow,   label: Hero — надпись сверху, type: string }
+      - { name: heroTitle,     label: Hero — заголовок,      type: string }
+      - { name: heroSubtitle,  label: Hero — подзаголовок,   type: text }
+      - { name: heroImage,     label: Hero — фото,           type: image }
+      - { name: heroButton,    label: Hero — кнопка,         type: string }
+      - { name: introEyebrow,  label: Интро — надпись,       type: string }
+      - { name: introTitle,    label: Интро — заголовок,     type: string }
+      - { name: introText,     label: Интро — текст,         type: text }
+      - name: facts
+        label: Факты (цифры)
+        type: object
+        list: true
+        fields:
+          - { name: value, label: Значение, type: string }
+          - { name: label, label: Подпись,  type: string }
+      - name: offers
+        label: Блоки (байдарки / баня / чан / питание)
+        type: object
+        list: true
+        fields:
+          - { name: eyebrow,   label: Надпись сверху,  type: string }
+          - { name: title,     label: Заголовок,       type: string }
+          - { name: text,      label: Описание,        type: text }
+          - { name: image,     label: Фото,            type: image }
+          - name: features
+            label: Список преимуществ
+            type: string
+            list: true
+          - { name: priceNote, label: Плашка цены,     type: string }
+      - { name: pricesTitle, label: Цены — заголовок, type: string }
+      - { name: pricesNote,  label: Цены — примечание, type: text }
+      - name: prices
+        label: Прайс
+        type: object
+        list: true
+        fields:
+          - { name: name,  label: Услуга,      type: string }
+          - { name: price, label: Цена,        type: string }
+          - { name: note,  label: Примечание,  type: string }
+      - { name: galleryTitle, label: Галерея — заголовок, type: string }
+      - name: gallery
+        label: Галерея — фото
+        type: object
+        list: true
+        fields:
+          - { name: src, label: Фото,      type: image }
+          - { name: alt, label: Описание,  type: string }
+      - { name: ctaEyebrow, label: Заявка — надпись,   type: string }
+      - { name: ctaTitle,   label: Заявка — заголовок, type: string }
+      - { name: ctaText,    label: Заявка — текст,     type: text }
+      - { name: phone1,     label: Телефон основной,   type: string }
+      - { name: phone2,     label: Телефон доп.,       type: string }
+      - { name: instagram,  label: Instagram,          type: string }
+      - { name: address,    label: Адрес,              type: string }
+      - { name: metaTitle,       label: SEO — title,       type: string }
+      - { name: metaDescription, label: SEO — description, type: text }

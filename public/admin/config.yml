@@ -116,3 +116,63 @@ collections:
             fields:
               - {label: "Вопрос", name: "question", widget: "string"}
               - {label: "Ответ",  name: "answer",   widget: "text"}
+
+  - name: "splavy"
+    label: "Лендинг «Байдарки»"
+    files:
+      - file: "content/splavy.yml"
+        name: "landing"
+        label: "Сплавы, баня и чан"
+        fields:
+          - {label: "Hero — надпись сверху", name: "heroEyebrow",  widget: "string"}
+          - {label: "Hero — заголовок",      name: "heroTitle",    widget: "string"}
+          - {label: "Hero — подзаголовок",   name: "heroSubtitle", widget: "text"}
+          - {label: "Hero — фото",           name: "heroImage",    widget: "image"}
+          - {label: "Hero — кнопка",         name: "heroButton",   widget: "string"}
+          - {label: "Интро — надпись",       name: "introEyebrow", widget: "string"}
+          - {label: "Интро — заголовок",     name: "introTitle",   widget: "string"}
+          - {label: "Интро — текст",         name: "introText",    widget: "text"}
+          - label: "Факты (цифры)"
+            name: "facts"
+            widget: "list"
+            fields:
+              - {label: "Значение", name: "value", widget: "string"}
+              - {label: "Подпись",  name: "label", widget: "string"}
+          - label: "Блоки (байдарки / баня / чан / питание)"
+            name: "offers"
+            widget: "list"
+            fields:
+              - {label: "Надпись сверху", name: "eyebrow",   widget: "string", required: false}
+              - {label: "Заголовок",      name: "title",     widget: "string"}
+              - {label: "Описание",       name: "text",      widget: "text"}
+              - {label: "Фото",           name: "image",     widget: "image"}
+              - label: "Список преимуществ"
+                name: "features"
+                widget: "list"
+                field: {label: "Пункт", name: "item", widget: "string"}
+              - {label: "Плашка цены",    name: "priceNote", widget: "string", required: false}
+          - {label: "Цены — заголовок",   name: "pricesTitle", widget: "string"}
+          - {label: "Цены — примечание",  name: "pricesNote",  widget: "text", required: false}
+          - label: "Прайс"
+            name: "prices"
+            widget: "list"
+            fields:
+              - {label: "Услуга",     name: "name",  widget: "string"}
+              - {label: "Цена",       name: "price", widget: "string"}
+              - {label: "Примечание", name: "note",  widget: "string", required: false}
+          - {label: "Галерея — заголовок", name: "galleryTitle", widget: "string"}
+          - label: "Галерея — фото"
+            name: "gallery"
+            widget: "list"
+            fields:
+              - {label: "Фото",     name: "src", widget: "image"}
+              - {label: "Описание", name: "alt", widget: "string", required: false}
+          - {label: "Заявка — надпись",   name: "ctaEyebrow", widget: "string"}
+          - {label: "Заявка — заголовок", name: "ctaTitle",   widget: "string"}
+          - {label: "Заявка — текст",     name: "ctaText",    widget: "text"}
+          - {label: "Телефон основной",   name: "phone1",     widget: "string"}
+          - {label: "Телефон доп.",       name: "phone2",     widget: "string"}
+          - {label: "Instagram",          name: "instagram",  widget: "string"}
+          - {label: "Адрес",              name: "address",    widget: "string"}
+          - {label: "SEO — title",        name: "metaTitle",       widget: "string"}
+          - {label: "SEO — description",  name: "metaDescription", widget: "text"}

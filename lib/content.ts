@@ -46,6 +46,45 @@ export type GalleryImage = {
   alt?: string;
 };
 
+export type SplavyOffer = {
+  eyebrow?: string;
+  title: string;
+  text: string;
+  image: string;
+  features?: string[];
+  priceNote?: string;
+};
+
+export type SplavyFact = { value: string; label: string };
+export type SplavyPrice = { name: string; price: string; note?: string };
+
+export type SplavySettings = {
+  heroEyebrow?: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+  heroImage?: string;
+  heroButton?: string;
+  introEyebrow?: string;
+  introTitle?: string;
+  introText?: string;
+  facts?: SplavyFact[];
+  offers?: SplavyOffer[];
+  pricesTitle?: string;
+  pricesNote?: string;
+  prices?: SplavyPrice[];
+  galleryTitle?: string;
+  gallery?: GalleryImage[];
+  ctaEyebrow?: string;
+  ctaTitle?: string;
+  ctaText?: string;
+  phone1?: string;
+  phone2?: string;
+  instagram?: string;
+  address?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+};
+
 export type GeneralSettings = {
   siteTitle?: string;
   slogan?: string;
@@ -118,4 +157,8 @@ export function getFaq(): FaqItem[] {
 export function getGallery(): GalleryImage[] {
   const data = readYamlFile("content/gallery.yml");
   return (data.images ?? []) as GalleryImage[];
+}
+
+export function getSplavySettings(): SplavySettings {
+  return readYamlFile("content/splavy.yml") as SplavySettings;
 }
